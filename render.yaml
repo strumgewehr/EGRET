@@ -3,7 +3,7 @@ services:
     name: egret-backend
     env: python
     rootDir: backend
-    buildCommand: pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip && pip install --only-binary=:all: -r requirements.txt
     startCommand: gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:$PORT
     autoDeploy: true
     envVars:

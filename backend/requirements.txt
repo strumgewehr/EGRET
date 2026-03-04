@@ -11,9 +11,9 @@ alembic==1.13.1
 psycopg2-binary==2.9.9
 asyncpg==0.29.0
 
-# Validation & Config
-pydantic==2.6.1
-pydantic-settings==2.1.0
+# Validation & Config (wheel-friendly on Render)
+pydantic==2.12.5
+pydantic-settings==2.13.1
 
 # Redis
 redis==5.0.1
