@@ -22,11 +22,6 @@ redis==5.0.1
 httpx==0.26.0
 requests==2.31.0
 
-# NLP - HuggingFace (stable versions)
-transformers==4.37.2
-torch==2.2.0
-sentence-transformers==2.2.2
-
 # RSS / Feed parsing
 feedparser==6.0.11
 

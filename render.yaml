@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: egret-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:$PORT
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./egret.db
+      - key: REDIS_URL
+        value: ""
+      - key: CORS_ORIGINS
+        value: https://egret-frontend.onrender.com,https://*.onrender.com
+      - key: SECRET_KEY
+        generateValue: true
+
+  - type: web
+    name: egret-frontend
+    env: node
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeploy: true
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://egret-backend.onrender.com
