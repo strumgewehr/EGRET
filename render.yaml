@@ -21,8 +21,8 @@ services:
     env: node
     rootDir: frontend
     buildCommand: npm install && npm run build
-    startCommand: npm run start
+    startCommand: NODE_ENV=production next start -p $PORT
     autoDeploy: true
     envVars:
       - key: NEXT_PUBLIC_API_URL
-        value: https://egret-backend.onrender.com
+        value: https://egret-3.onrender.com
