@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EGRET — GenZ Flashy Sentiment theme */
+:root {
+  --egret-bg: 224 45% 4%;
+  --egret-surface: 224 40% 6%;
+  --egret-card: 224 35% 8%;
+  --egret-border: 220 25% 15%;
+  --egret-text: 210 30% 98%;
+  --egret-muted: 220 20% 65%;
+  --egret-accent: 280 100% 70%; /* Flashy Pink/Purple */
+  --egret-accent-glow: 280 100% 70% / 0.5;
+  --egret-secondary: 190 100% 60%; /* Cyan */
+  --egret-gold: 43 96% 56%;
+  --egret-positive: 155 100% 65%; /* Neon Green */
+  --egret-negative: 345 100% 60%; /* Neon Red */
+  --egret-neutral: 200 100% 65%; /* Neon Blue */
+  --egret-ticker: 224 45% 3%;
+}
+
+body {
+  background: hsl(var(--egret-bg));
+  color: hsl(var(--egret-text));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  overflow-x: hidden;
+}
+
+/* Flashy Text Gradients */
+.text-flashy {
+  background: linear-gradient(135deg, hsl(var(--egret-accent)), hsl(var(--egret-secondary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism */
+.glass-card {
+  background: hsla(var(--egret-card) / 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid hsla(var(--egret-border) / 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.glass-card:hover {
+  border-color: hsla(var(--egret-accent) / 0.6);
+  box-shadow: 0 0 25px -5px hsla(var(--egret-accent-glow));
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Floating Mesh Backdrop */
+.mesh-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 10% 20%, hsla(var(--egret-accent) / 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, hsla(var(--egret-secondary) / 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, hsla(var(--egret-bg) / 1) 0%, transparent 100%);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+/* Ticker-style gradient strip */
+.egret-ticker {
+  background: linear-gradient(90deg, transparent, hsla(var(--egret-accent) / 0.15), transparent);
+  border-top: 1px solid hsla(var(--egret-accent) / 0.4);
+  border-bottom: 1px solid hsla(var(--egret-accent) / 0.4);
+}
+
+/* Card glow on focus/hover */
+.egret-card {
+  background: hsl(var(--egret-card));
+  border: 1px solid hsl(var(--egret-border));
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.egret-card:hover {
+  border-color: hsla(var(--egret-accent) / 0.6);
+  box-shadow: 0 0 30px -5px hsla(var(--egret-accent-glow));
+  transform: scale(1.02);
+}
+
+/* Sentiment badges with neon glow */
+.sentiment-positive { 
+  color: hsl(var(--egret-positive));
+  text-shadow: 0 0 8px hsla(var(--egret-positive) / 0.4);
+}
+.sentiment-negative { 
+  color: hsl(var(--egret-negative));
+  text-shadow: 0 0 8px hsla(var(--egret-negative) / 0.4);
+}
+.sentiment-neutral { 
+  color: hsl(var(--egret-neutral));
+  text-shadow: 0 0 8px hsla(var(--egret-neutral) / 0.4);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Subtle pulse for live indicator */
+@keyframes egret-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+.egret-live {
+  animation: egret-pulse 1.5s ease-in-out infinite;
+}

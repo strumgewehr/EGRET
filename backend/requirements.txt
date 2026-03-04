@@ -1,0 +1,48 @@
+# News Sentiment Intelligence - Backend Dependencies
+# Python 3.11+
+
+# Web
+fastapi==0.109.2
+uvicorn[standard]==0.27.1
+
+# Database
+sqlalchemy==2.0.25
+alembic==1.13.1
+psycopg2-binary==2.9.9
+asyncpg==0.29.0
+
+# Validation & Config
+pydantic==2.6.1
+pydantic-settings==2.1.0
+
+# Redis
+redis==5.0.1
+
+# HTTP
+httpx==0.26.0
+requests==2.31.0
+
+# NLP - HuggingFace (stable versions)
+transformers==4.37.2
+torch==2.2.0
+sentence-transformers==2.2.2
+
+# RSS / Feed parsing
+feedparser==6.0.11
+
+# Scheduling
+apscheduler==3.10.4
+
+# Security & Middleware
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Utils
+python-multipart==0.0.9
+python-dotenv==1.0.1
+structlog==24.1.0
+
+# Testing
+pytest==8.0.0
+pytest-asyncio==0.23.4
+httpx==0.26.0
