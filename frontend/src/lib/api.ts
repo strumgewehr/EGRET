@@ -16,12 +16,12 @@ const MAX_RETRIES = 2;
 api.interceptors.response.use(
   (res) => res,
   async (err: AxiosError) => {
-    const config = err.config as { _retryCount?: number };
-    config._retryCount = config._retryCount ?? 0;
-    if (config._retryCount < MAX_RETRIES && err.response?.status && err.response.status >= 500) {
-      config._retryCount += 1;
+    const cfg = err.config ?? {};
+    const current = (cfg as any)._retryCount ?? 0;
+    if (current < MAX_RETRIES && err.response?.status && err.response.status >= 500) {
+      (cfg as any)._retryCount = current + 1;
       await new Promise((r) => setTimeout(r, 1000));
-      return api.request(config);
+      return api.request(cfg as any);
     }
     return Promise.reject(err);
   }
@@ -54,6 +54,7 @@ export type ArticleItem = {
   bias_index: number | null;
   is_flagged: boolean;
   headline_manipulation_score: number | null;
+  topic?: string | null;
 };
 
 export type SourceItem = {
