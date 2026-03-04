@@ -12,7 +12,7 @@ services:
       - key: REDIS_URL
         value: ""
       - key: CORS_ORIGINS
-        value: https://egret-frontend.onrender.com,https://*.onrender.com
+        value: "*"
       - key: SECRET_KEY
         generateValue: true
 
